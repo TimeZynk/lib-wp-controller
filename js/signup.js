@@ -120,9 +120,9 @@
     }
 
     if (location.host !== 'timezynk.com') {
-        var form = document.getElementById('signup-form');
-        if (form) {
-            form.setAttribute('action', 'http://localhost:8989/api/signup/v1/token');
+        var signupForm = document.getElementById('signup-form');
+        if (signupForm) {
+            signupForm.setAttribute('action', 'http://localhost:8989/api/signup/v1/token');
         }
     }
 })(document, location);

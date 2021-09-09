@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src --ext .js",
-    "format": "prettier --write src/js src/style tests types",
+    "lint": "eslint",
+    "format": "prettier --write js/",
     "version": "npm run format && git add .",
     "postversion": "git push && git push --tags"
   },
@@ -21,7 +21,9 @@
   },
   "homepage": "https://gitlab.com/timezynk/lib-wp-controller#readme",
   "dependencies": {
-    "eslint": "^7.32.0",
     "prettier": "^2.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
   }
 }
