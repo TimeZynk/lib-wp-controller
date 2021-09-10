@@ -1,16 +1,16 @@
 <?php
 /**
  * Plugin Name: Timezynk Scripts
- * Plugin URI: https://gitlab.com/timezynk/client-web/-/merge_requests/22
+ * Plugin URI: https://gitlab.com/timezynkpublic/lib-wp-controller
  * Description: Links in signup and pricing scripts
- * Version: 1.3.0
+ * Version: 1.3.3
  * Author: Timezynk Dev
  * Author URI: https://timezynk.com
- * GitHub Plugin URI: https://gitlab.com/timezynkpublic/lib-wp-controller
+ * GitLab Plugin URI: https://gitlab.com/timezynkpublic/lib-wp-controller
  */
 
 function timezynk_scripts_enqueue_scripts() {
-    $script_version = '1.3.0';
+    $script_version = '1.3.3';
     wp_enqueue_script('timezynk_password_strength', plugins_url( 'js/password-strength.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_pricing', plugins_url( 'js/pricing.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_signup', plugins_url( 'js/signup.js', __FILE__), array(), $script_version, true);
@@ -50,6 +50,6 @@ function timezynk_scripts_monitoringservice_snippet() {
 }
 
 
-add_action('wp_head', 'timezynk_scripts_mixpanel_snippet');
+// add_action('wp_head', 'timezynk_scripts_mixpanel_snippet');
 add_action('wp_head', 'timezynk_scripts_monitoringservice_snippet');
 add_action('wp_enqueue_scripts', 'timezynk_scripts_enqueue_scripts');
