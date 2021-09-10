@@ -58,7 +58,7 @@
         }
     }
 
-    function handlePayChange(e) {
+    function handlePayChange() {
         trackEntry();
         if (pay0Radio.checked) {
             payTerms = 0;
