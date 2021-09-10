@@ -6,7 +6,7 @@
  * Version: 1.3.3
  * Author: Timezynk Dev
  * Author URI: https://timezynk.com
- * GitLab Plugin URI: https://gitlab.com/timezynkpublic/lib-wp-controller
+ * GitLab Plugin URI: https://github.com/TimeZynk/lib-wp-controller
  */
 
 function timezynk_scripts_enqueue_scripts() {
