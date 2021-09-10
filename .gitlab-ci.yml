@@ -15,6 +15,6 @@ unit-test:
     stage: lint
     script:
         - npm ci --cache .npm --prefer-offline --also=dev --unsafe-perm
-        - npm lint
+        - npm run lint
     rules:
         - when: always
