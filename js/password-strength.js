@@ -107,7 +107,9 @@
                 if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                     try {
                         cb(JSON.parse(xmlHttp.responseText));
-                    } catch {}
+                    } catch (error) {
+                        timeout = null;
+                    }
                     timeout = null;
                 }
             };
