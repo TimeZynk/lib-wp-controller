@@ -8,11 +8,19 @@
     }
 
     function trackEntry() {
-        if (tracked || !mixpanel || !mixpanel.track) {
+        if (tracked) {
             return;
         }
         tracked = true;
-        mixpanel.track('Signup Form Input');
+        if (mixpanel && mixpanel.track) {
+            mixpanel.track('Signup Form Input');
+        }
+        if (typeof gtag === 'function') {
+            gtag('event', 'Form Input', {
+                event_category: 'Signup Form',
+                event_label: location.pathname.substring(0, 19),
+            });
+        }
     }
 
     function validateNotEmpty(e) {

@@ -28,11 +28,18 @@
     }
 
     function trackEntry() {
-        if (tracked || !mixpanel || !mixpanel.track) {
+        if (tracked) {
             return;
         }
         tracked = true;
-        mixpanel.track('Pricing Calculator Input');
+        if (mixpanel && mixpanel.track) {
+            mixpanel.track('Pricing Calculator Input');
+        }
+        if (typeof gtag === 'function') {
+            gtag('event', 'Form Input', {
+                event_category: 'Pricing Calculator',
+            });
+        }
     }
 
     function updatePrice() {
