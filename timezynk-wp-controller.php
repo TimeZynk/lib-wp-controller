@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Timezynk Scripts
- * Plugin URI: https://github.com/TimeZynk/lib-wp-controller
+ * Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  * Description: Links in signup and pricing scripts
  * Version: 1.4.0
  * Author: Timezynk Dev
  * Author URI: https://timezynk.com
- * GitHub Plugin URI: https://github.com/TimeZynk/lib-wp-controller
+ * GitHub Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  */
 
 function timezynk_scripts_enqueue_scripts() {
