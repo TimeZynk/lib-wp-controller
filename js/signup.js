@@ -12,7 +12,7 @@
             return;
         }
         tracked = true;
-        if (mixpanel && mixpanel.track) {
+        if (window.mixpanel && mixpanel.track) {
             mixpanel.track('Signup Form Input');
         }
         if (typeof gtag === 'function') {
