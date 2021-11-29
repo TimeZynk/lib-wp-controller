@@ -1,29 +1,29 @@
 {
-  "name": "lib-wp-controller",
-  "version": "1.0.0",
-  "description": "controller for timezynk in wordPress",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint  js --ext .js",
-    "format": "prettier --write js/",
-    "version": "npm run format && git add .",
-    "postversion": "git push && git push --tags"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/timezynk/lib-wp-controller.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/timezynk/lib-wp-controller/issues"
-  },
-  "homepage": "https://gitlab.com/timezynk/lib-wp-controller#readme",
-  "dependencies": {
-    "prettier": "^2.3.2"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0"
-  }
+    "name": "lib-wp-controller",
+    "version": "1.4.1",
+    "description": "controller for timezynk in wordPress",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint  js --ext .js",
+        "format": "prettier --write js/",
+        "version": "npm run format && git add .",
+        "postversion": "git push && git push --tags"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@gitlab.com/timezynk/lib-wp-controller.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/timezynk/lib-wp-controller/issues"
+    },
+    "homepage": "https://gitlab.com/timezynk/lib-wp-controller#readme",
+    "dependencies": {
+        "prettier": "^2.3.2"
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0"
+    }
 }

@@ -1,4 +1,4 @@
-(function (document) {
+(function (doc, win) {
     var errors = {},
         values = {},
         tracked = false;
@@ -18,7 +18,7 @@
         if (typeof gtag === 'function') {
             gtag('event', 'Form Input', {
                 event_category: 'Signup Form',
-                event_label: location.pathname.substring(0, 19),
+                event_label: win.location.pathname.substring(0, 19),
             });
         }
     }
@@ -61,14 +61,14 @@
     }
 
     function validateForm() {
-        validateEmail({ target: document.getElementById('email') });
+        validateEmail({ target: doc.getElementById('email') });
 
-        var nameEl = document.getElementById('name');
+        var nameEl = doc.getElementById('name');
         if (nameEl) {
             validateNotEmpty({ target: nameEl });
         }
 
-        var passEl = document.getElementById('password');
+        var passEl = doc.getElementById('password');
         if (passEl) {
             validateNotEmpty({ target: passEl });
         }
@@ -82,7 +82,7 @@
             return;
         }
 
-        var signUpBtn = document.getElementById('sign-up');
+        var signUpBtn = doc.getElementById('sign-up');
         if (signUpBtn.getAttribute('disabled')) {
             e.preventDefault();
             return;
@@ -92,7 +92,7 @@
     }
 
     function addDistinctId() {
-        var distinctIdInput = document.createElement('input');
+        var distinctIdInput = doc.createElement('input');
         distinctIdInput.setAttribute('type', 'hidden');
         distinctIdInput.setAttribute('name', 'mixpanel-distinct-id');
         distinctIdInput.value = mixpanel.get_distinct_id();
@@ -105,32 +105,32 @@
         }
     }
 
-    var form = document.getElementById('signup-form');
+    var form = doc.getElementById('signup-form');
     on(form, 'submit', signUp);
-    var nameInput = document.getElementById('name');
+    var nameInput = doc.getElementById('name');
     on(nameInput, 'input', validateNotEmpty);
     on(nameInput, 'change', validateNotEmpty);
-    var emailInput = document.getElementById('email');
+    var emailInput = doc.getElementById('email');
     on(emailInput, 'input', validateEmail);
     on(emailInput, 'change', validateEmail);
 
-    var campaignInput = document.getElementById('campaign-code');
+    var campaignInput = doc.getElementById('campaign-code');
     if (campaignInput) {
-        campaignInput.value = location.pathname.substring(0, 19);
+        campaignInput.value = win.location.pathname.substring(0, 19);
     }
 
-    if (form && mixpanel) {
+    if (form && win.mixpanel) {
         if (!mixpanel.get_distinct_id) {
-            on(document, 'mixpanelReady', addDistinctId);
+            on(doc, 'mixpanelReady', addDistinctId);
         } else {
             addDistinctId();
         }
     }
 
-    if (location.host !== 'timezynk.com') {
-        var signupForm = document.getElementById('signup-form');
+    if (win.location.host !== 'timezynk.com') {
+        var signupForm = doc.getElementById('signup-form');
         if (signupForm) {
             signupForm.setAttribute('action', 'http://localhost:8989/api/signup/v1/token');
         }
     }
-})(document, location);
+})(document, window);
