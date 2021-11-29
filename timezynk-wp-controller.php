@@ -10,7 +10,7 @@
  */
 
 function timezynk_scripts_enqueue_scripts() {
-    $script_version = '1.4.1';
+    $script_version = '1.4.2';
     wp_enqueue_script('timezynk_password_strength', plugins_url( 'js/password-strength.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_pricing', plugins_url( 'js/pricing.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_signup', plugins_url( 'js/signup.js', __FILE__), array(), $script_version, true);
