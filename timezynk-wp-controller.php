@@ -3,7 +3,7 @@
  * Plugin Name: Timezynk Scripts
  * Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  * Description: Links in signup and pricing scripts
- * Version: 1.4.2
+ * Version: 1.5.0
  * Author: Timezynk Dev
  * Author URI: https://timezynk.com
  * GitHub Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
