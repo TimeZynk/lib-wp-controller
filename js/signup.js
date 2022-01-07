@@ -73,6 +73,16 @@
             validateNotEmpty({ target: passEl });
         }
 
+        var countryCodeInput = doc.getElementById('country-code');
+        if (countryCodeInput) {
+            validateNotEmpty({ target: countryCodeInput });
+        }
+
+        var phoneInput = doc.getElementById('phone');
+        if (phoneInput) {
+            validateNotEmpty({ target: phoneInput });
+        }
+
         return Object.keys(errors).length === 0;
     }
 
@@ -113,6 +123,12 @@
     var emailInput = doc.getElementById('email');
     on(emailInput, 'input', validateEmail);
     on(emailInput, 'change', validateEmail);
+    var countryCodeInput = doc.getElementById('country-code');
+    on(countryCodeInput, 'input', validateNotEmpty);
+    on(countryCodeInput, 'change', validateNotEmpty);
+    var phoneInput = doc.getElementById('phone');
+    on(phoneInput, 'input', validateNotEmpty);
+    on(phoneInput, 'change', validateNotEmpty);
 
     var campaignInput = doc.getElementById('campaign-code');
     if (campaignInput) {
