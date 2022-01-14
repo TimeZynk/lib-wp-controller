@@ -1,6 +1,15 @@
+var password_messages;
+
 (function (document) {
     var timeout;
     var interval;
+    var defaultLabels = [
+        'Insecure password!',
+        'Insecure password',
+        'Weak password!',
+        'Good password',
+        'Strong password',
+    ];
 
     function getUrl(password) {
         if (location.host !== 'timezynk.com') {
@@ -9,59 +18,8 @@
         return 'https://api.timezynk.com/api/password-strength?pw=' + encodeURIComponent(password);
     }
 
-    function getLocale() {
-        var p = location.pathname;
-        if (p.indexOf('/da/signup') > -1) {
-            return 'da';
-        }
-        if (p.indexOf('/nb/signup') > -1) {
-            return 'nb';
-        }
-        if (p.indexOf('/sv/signup') > -1) {
-            return 'sv';
-        }
-        return 'en';
-    }
-
-    function getLabel(locale, strength) {
-        var labels = [
-            'Insecure password detected!\nTo finish password update, please enter a stronger password.\nE.g. make it longer or use special symbols ("#-!), etc..',
-            'Insecure password detected!\nTo finish password update, please enter a stronger password.\nE.g. make it longer or use special symbols ("#-!), etc..',
-            'Weak!\nTo finish password update, please enter a stronger password.\nE.g. make it longer or use special symbols ("#-!), etc..',
-            'Good',
-            'Strong',
-        ];
-
-        if (locale === 'sv') {
-            labels = [
-                'Osäkert lösenord!\nFör att genomföra lösenordsuppdateringen, ange ett starkare lösenord.\nT.ex. gör det längre eller använd speciella symboler ("# -!), osv...',
-                'Osäkert lösenord!\nFör att genomföra lösenordsuppdateringen, ange ett starkare lösenord.\nT.ex. gör det längre eller använd speciella symboler ("# -!), osv...',
-                'Svagt lösenord!\nFör att genomföra lösenordsuppdateringen, ange ett starkare lösenord.\nT.ex. gör det längre eller använd speciella symboler ("# -!), osv...',
-                'Ok',
-                'Starkt',
-            ];
-        }
-
-        if (locale === 'da') {
-            labels = [
-                'Usikker adgangskode!\nFor at afslutte opdateringen af adgangskoden skal du indtaste en stærkere adgangskode.\nF.eks. gør det længere eller brug specielle symboler ("# -!) osv...',
-                'Usikker adgangskode!\nFor at afslutte opdateringen af adgangskoden skal du indtaste en stærkere adgangskode.\nF.eks. gør det længere eller brug specielle symboler ("# -!) osv...',
-                'Svag!\nFor at afslutte opdateringen af adgangskoden skal du indtaste en stærkere adgangskode.\nF.eks. gør det længere eller brug specielle symboler ("# -!) osv...',
-                'Ok',
-                'Stærk',
-            ];
-        }
-
-        if (locale === 'nb') {
-            labels = [
-                'Usikkert passord!\nSkriv inn et sterkere passord for å fullføre passordoppdateringen.\nF.eks lag den lenger eller bruk spesielle symboler ("# -!), osv...',
-                'Usikkert passord!\nSkriv inn et sterkere passord for å fullføre passordoppdateringen.\nF.eks lag den lenger eller bruk spesielle symboler ("# -!), osv...',
-                'Svak!\nSkriv inn et sterkere passord for å fullføre passordoppdateringen.\nF.eks lag den lenger eller bruk spesielle symboler ("# -!), osv...',
-                'Ok',
-                'Stærk',
-            ];
-        }
-
+    function getLabel(strength) {
+        var labels = password_messages || defaultLabels;
         return labels[strength] || labels[0];
     }
 
@@ -135,7 +93,6 @@
         var pwInput = document.getElementById('password');
         var submitBtn = document.getElementById('sign-up');
         var loader = document.getElementById('password-strength-loader');
-        var locale = getLocale();
 
         wrapper.style.display = 'block';
 
@@ -148,7 +105,7 @@
 
                 var s = res.strength;
                 let color = getColor(s);
-                var text = getLabel(locale, s);
+                var text = getLabel(s);
 
                 if (s > 2) {
                     submitBtn.disabled = false;

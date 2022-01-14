@@ -1,19 +1,27 @@
 <?php
 /**
  * Plugin Name: Timezynk Scripts
+ * Text Domain: timezynk-wp-controller
  * Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  * Description: Links in signup and pricing scripts
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: Timezynk Dev
  * Author URI: https://timezynk.com
  * GitHub Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  */
 
 function timezynk_scripts_enqueue_scripts() {
-    $script_version = '1.4.2';
+    $script_version = '1.6.0';
     wp_enqueue_script('timezynk_password_strength', plugins_url( 'js/password-strength.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_pricing', plugins_url( 'js/pricing.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_signup', plugins_url( 'js/signup.js', __FILE__), array(), $script_version, true);
+    wp_localize_script('timezynk_password_strength', 'password_messages', array(
+        0 => __('Insecure password!\nTo finish password update, please enter a stronger password.\nE.g. make it longer or use special symbols ("#-!), etc..', 'timezynk-wp-controller'),
+        1 => __('Insecure password!\nTo finish password update, please enter a stronger password.\nE.g. make it longer or use special symbols ("#-!), etc..', 'timezynk-wp-controller'),
+        2 => __('Weak password!\nTo finish password update, please enter a stronger password.\nE.g. make it longer or use special symbols ("#-!), etc..', 'timezynk-wp-controller'),
+        3 => __('Good password', 'timezynk-wp-controller'),
+        4 => __('Strong password', 'timezynk-wp-controller')
+    ));
 }
 
 function timezynk_scripts_mixpanel_snippet() {
