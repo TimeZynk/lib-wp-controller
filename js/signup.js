@@ -12,9 +12,6 @@
             return;
         }
         tracked = true;
-        if (window.mixpanel && mixpanel.track) {
-            mixpanel.track('Signup Form Input');
-        }
         if (typeof gtag === 'function') {
             gtag('event', 'Form Input', {
                 event_category: 'Signup Form',

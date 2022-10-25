@@ -4,16 +4,15 @@
  * Text Domain: timezynk-wp-controller
  * Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  * Description: Links in signup and pricing scripts
- * Version: 1.7.0
+ * Version: 1.7.1
  * Author: Timezynk Dev
  * Author URI: https://timezynk.com
  * GitHub Plugin URI: https://github.com/TimeZynk/timezynk-wp-controller
  */
 
 function timezynk_scripts_enqueue_scripts() {
-    $script_version = '1.7.0';
+    $script_version = '1.7.1';
     wp_enqueue_script('timezynk_password_strength', plugins_url( 'js/password-strength.js', __FILE__ ), array(), $script_version, true);
-    wp_enqueue_script('timezynk_pricing', plugins_url( 'js/pricing.js', __FILE__ ), array(), $script_version, true);
     wp_enqueue_script('timezynk_signup', plugins_url( 'js/signup.js', __FILE__), array(), $script_version, true);
     wp_localize_script('timezynk_password_strength', 'password_messages', array(
         0 => __('Insecure password! Please make it longer or use numbers and special characters.', 'timezynk-wp-controller'),
