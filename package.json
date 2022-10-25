@@ -1,6 +1,6 @@
 {
     "name": "lib-wp-controller",
-    "version": "1.7.0",
+    "version": "1.7.1",
     "description": "controller for timezynk in wordPress",
     "main": "index.js",
     "scripts": {
