@@ -86,6 +86,26 @@
         return Object.keys(errors).length === 0;
     }
 
+    function addAnalyticsLinker() {
+        if (!window.ga) {
+            return;
+        }
+        var tracker = window.ga.getAll()[0];
+        if (!tracker) {
+            return;
+        }
+        var linker = new window.gaplugins.Linker(tracker);
+        if (!linker) {
+            return;
+        }
+        var value = linker.decorate('https://tzapp.com/').split('=')[1];
+        var analyticsLinkerInput = doc.createElement('input');
+        analyticsLinkerInput.setAttribute('type', 'hidden');
+        analyticsLinkerInput.setAttribute('name', '_ga');
+        analyticsLinkerInput.value = value;
+        form.appendChild(analyticsLinkerInput);
+    }
+
     function signUp(e) {
         if (!validateForm()) {
             e.preventDefault();
@@ -97,16 +117,9 @@
             e.preventDefault();
             return;
         }
+        addAnalyticsLinker();
         signUpBtn.setAttribute('disabled', 'disabled');
         signUpBtn.textContent = signUpBtn.getAttribute('data-alt');
-    }
-
-    function addDistinctId() {
-        var distinctIdInput = doc.createElement('input');
-        distinctIdInput.setAttribute('type', 'hidden');
-        distinctIdInput.setAttribute('name', 'mixpanel-distinct-id');
-        distinctIdInput.value = mixpanel.get_distinct_id();
-        form.appendChild(distinctIdInput);
     }
 
     function on(element, event, handler) {
@@ -133,14 +146,6 @@
     var campaignInput = doc.getElementById('campaign-code');
     if (campaignInput) {
         campaignInput.value = win.location.pathname.substring(0, 19);
-    }
-
-    if (form && win.mixpanel) {
-        if (!mixpanel.get_distinct_id) {
-            on(doc, 'mixpanelReady', addDistinctId);
-        } else {
-            addDistinctId();
-        }
     }
 
     if (win.location.host !== 'timezynk.com') {
