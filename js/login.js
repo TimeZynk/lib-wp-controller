@@ -6,7 +6,7 @@
         e.preventDefault();
         gtag('event', 'page_view', {
             page_path: '/login-link-form',
-            send_to: 'UA-30401446-1',
+            send_to: 'G-LF72DGTTDK',
             event_callback: function () {
                 document.location = h;
             },
