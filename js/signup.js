@@ -3,6 +3,8 @@
         values = {},
         tracked = false;
 
+    win.dataLayer = win.dataLayer || [];
+
     function isBlank(str) {
         return !str || /^\s*$/.test(str);
     }
@@ -12,12 +14,11 @@
             return;
         }
         tracked = true;
-        if (typeof gtag === 'function') {
-            gtag('event', 'Form Input', {
-                event_category: 'Signup Form',
-                event_label: win.location.pathname.substring(0, 19),
-            });
-        }
+        win.dataLayer.push({
+            event: 'Form Input',
+            event_category: 'Signup Form',
+            event_label: win.location.pathname.substring(0, 19),
+        });
     }
 
     function validateNotEmpty(e) {

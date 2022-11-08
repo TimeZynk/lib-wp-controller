@@ -1,6 +1,6 @@
 var password_messages;
 
-(function (document) {
+(function (document, location) {
     var timeout;
     var interval;
     var defaultLabels = [
